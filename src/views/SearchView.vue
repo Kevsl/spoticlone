@@ -31,7 +31,7 @@
     </button>
   </div>
   <ul
-    class="absolute top-10 w-90 ml-72 z-20 opacity-75 hover:opacity-100 l"
+    class="absolute top-10 w-90 xl:ml-64 z-20 opacity-75 lg:ml-12 sm:w-24 hover:opacity-100 "
     v-if="search"
   >
     <p class="text-lightest text-center">Search history</p>
