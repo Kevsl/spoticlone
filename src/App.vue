@@ -58,7 +58,7 @@
           </button>
           <div class="h-px w-full bg-light my-3"></div>
           <div class="mx-5">
-            <div class="w-full h-10 overflow-y-scroll">
+            <div class="w-full h-14 overflow-y-scroll">
               <p
                 v-for="album in albums"
                 :key="album.name"
@@ -81,7 +81,7 @@
               <i class="material-icons mr-3 rounded-full border border-lightest"
                 >arrow_downward</i
               >
-              <p class="text-sm font-semibold">Install App</p>
+              <p class="text-xs font-semibold">Install App</p>
             </button>
           </div>
           <div class="relative pt-4">
