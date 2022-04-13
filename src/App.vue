@@ -1,7 +1,8 @@
 <template>
   <div class="bg-dark h-screen">
-    <div class="flex" style="height: 88vh">
+    <div class="flex overflow-y-scroll" style="height: 88vh">
       <!-- Side nav -->
+
       <div class="w-56 bg-black h-full flex-none">
         <div class="p-6">
           <img src="./assets/images/spotify-logo.png" class="h-10" />
@@ -106,94 +107,16 @@
           </div>
         </div>
       </div>
+
+
+
+
+
+
       <!-- main content -->
       <div class="w-full h-full relative overflow-y-scroll">
         <!-- header -->
-        <div
-          class="
-            w-full
-            sticky
-            top-0
-            py-2
-            px-6
-            flex
-            items-center
-            justify-between
-            bg-dark
-          "
-        >
-          <div class="flex items-center">
-            <button
-              class="rounded-full bg-black w-8 h-8 text-white mr-3"
-              @click="goback()"
-            >
-              <i class="material-icons text-3xl">keyboard_arrow_left</i>
-            </button>
-            <button class="rounded-full bg-black w-8 h-8 text-white">
-              <i class="material-icons text-3xl">keyboard_arrow_right</i>
-            </button>
-          </div>
-          <div class="relative">
-            <button
-              @click="showDropdown = true"
-              class="bg-light rounded-full py-1 px-2 flex items-center"
-            >
-              <img
-                src="./assets/images/profil.jpeg"
-                class="rounded-full h-6 w-6 mr-2"
-              />
-              <p class="text-white font-semibold text-xs mr-3">Kevin Terrier</p>
-              <i v-if="showDropdown === false" class="material-icons text-white"
-                >arrow_drop_down</i
-              >
-              <i
-                @click="showDropdown = false"
-                v-if="showDropdown === true"
-                class="material-icons text-white"
-                >arrow_drop_up
-              </i>
-            </button>
-            <div
-              v-if="showDropdown === true"
-              class="absolute bg-light w-full rounded mt-1"
-            >
-              <button
-                @click="showDropdown = false"
-                class="
-                  focus:outline-none
-                  w-full
-                  text-sm
-                  py-2
-                  text-lightest
-                  hover
-                  text-white
-                  border-b border-white
-                  opacity-75
-                  hover:opacity-100
-                "
-              >
-                Account
-              </button>
-              <button
-                @click="showDropdown = false"
-                class="
-                  w-full
-                  focus:outline-none
-                  text-sm
-                  py-2
-                  text-lightest
-                  hover
-                  text-white
-                  border-b border-light
-                  opacity-75
-                  hover:opacity-100
-                "
-              >
-                Log Out
-              </button>
-            </div>
-          </div>
-        </div>
+<Header />
         <!--Start   dynamic content  -->
         <div>
           <SearchView v-if="setID === 'search'" />
@@ -205,127 +128,37 @@
       </div>
     </div>
     <!-- play bar -->
+<PlayBar />
 
-    <div
-      class="
-        w-full
-        flex
-        items-center
-        justify-between
-        px-6
-        bg-light
-        border-t border-dark
-      "
-      style="height: 12vh"
-    >
-      <div class="flex items-center w-1/4">
-        <div>
-          <h1 class="text-sm text-white tracking wide">G.O.A.T</h1>
-          <h2 class="text-xs text-lightest tracking-wide">Polyphia</h2>
-        </div>
-        <i class="material-icons text-base text-green mx-4 hover:text-white"
-          >favorite
-        </i>
-        <i class="material-icons text-base text-lightest hover:text-white"
-          >picture_in_picture
-        </i>
-      </div>
-
-      <div class="flex flex-col justify-center w-2/4 items-center">
-        <div class="flex items-center">
-          <button class="text-lightest hover:text-white mx-5">
-            <i class="text-lg material-icons">shuffle</i>
-          </button>
-          <button class="text-lightest hover:text-white">
-            <i class="text-lg material-icons">skip_previous</i>
-          </button>
-          <button
-            class="
-              rounded-full
-              w-8
-              h-8
-              border-lightest border
-              text-lightest
-              hover:text-white
-              flex
-              items-center
-              justify-center
-              mx-5
-            "
-          >
-            <i
-              v-if="pause === false"
-              class="text-lg material-icons"
-              @click.prevent="
-                playSong(true), (pause = true)
-              "
-
-              >play_arrow</i
-            >
-            <i
-              v-if="pause === true"
-              class="text-lg material-icons"
-              @click.prevent="
-                playSong(false), (pause = false)"
-              >pause</i
-            >
-          </button>
-          <button class="text-lightest hover:text-white">
-            <i class="text-lg material-icons">skip_next</i>
-          </button>
-          <button class="mx-5 text-lightest hover:text-white">
-            <i class="material-icons">repeat</i>
-          </button>
-        </div>
-        <div class="w-3/4 flex items-center justify-center mt-3">
-          <p class="text-xs text-lightest mr-1">0:28</p>
-          <div class="w-full h-1 bg-dark flex items center rounded-full">
-            <div class="h-1 bg-green rounded-full" style="width: 18%"></div>
-            <div class="bg-white h-3 w-3 rounded-full -ml-1 shadow"></div>
-          </div>
-          <p class="text-xs text-lightest ml-1">2:40</p>
-        </div>
-      </div>
-
-      <div class="flex items-center w-1/4 justify-end">
-        <i class="material-icons text-lightest hover:text-white"
-          >playlist_play
-        </i>
-        <i class="material-icons text-xl text-lightest mx-3 hover:text-white"
-          >important_devices
-        </i>
-        <i class="material-icons text-xl text-lightest hover:text-white"
-          >volume_up
-        </i>
-        <div class="w-24 ml-1 bg-lightest rounded-full h-1"></div>
-      </div>
-    </div>
   </div>
 </template>
 <script>
 import SearchView from "./views/SearchView.vue";
 import HomeView from "./views/HomeView.vue";
 import router from "./router";
-import song from './assets/medias/goat.mp3'
-const audio = new Audio(song)
+import PlayBar from './components/PlayBar.vue'
+import Header from './components/Header.vue'
+
+
 
 export default {
   name: "App",
   components: {
     SearchView,
     HomeView,
+      PlayBar,
+      Header
+
   },
   data: function () {
     return {
-      search: null,
-      token: null,
-      pages: [
+     
+         pages: [
         { id: "home", name: "Home", icon: "home" },
         { id: "search", name: "Search", icon: "search" },
         { id: "library", name: "Your Library", icon: "bar_chart" },
       ],
-      setID: "search",
-      albums: [
+          albums: [
         { name: "drive" },
         { name: "walk" },
         { name: "chill " },
@@ -334,18 +167,14 @@ export default {
         { name: "Lo-fi" },
         { name: "Road trip" },
       ],
-      showDropdown: false,
-      pause: false,
+      setID: "search",
+
+   
+  
     };
   },
-  methods: {
-    goBack() {
-      router.go(-1);
-    },
-    playSong(playerState) {
-      playerState === true ? audio.play() : audio.pause();
-    },
-  },
+
+ 
 };
 </script>
 
